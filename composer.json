@@ -12,7 +12,8 @@
     "require": {
     },
     "autoload": {
-        "psr-4": {"glm\\": "src/"}
+        "psr-4": {"glm\\": "src/"},
+        "files": ["src/globals.php"]
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8"
