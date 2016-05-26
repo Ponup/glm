@@ -37,6 +37,25 @@ class mat4 implements \ArrayAccess {
         return new mat4($result);
     }
 
+    public function scale($value) {
+        if($value instanceof vec3 || is_numeric($value)) {
+        return new mat4([
+            [ $this->data[0][0] * $value, $this->data[0][1] * $value, $this->data[0][2] * $value, $this->data[0][3] * $value ],
+            [ $this->data[1][0] * $value, $this->data[1][1] * $value, $this->data[1][2] * $value, $this->data[1][3] * $value ],
+            [ $this->data[2][0] * $value, $this->data[2][1] * $value, $this->data[2][2] * $value, $this->data[2][3] * $value ],
+            [ $this->data[3][0], $this->data[3][1], $this->data[3][2], $this->data[3][3] ]
+        ]);
+        } else {
+        return new mat4([
+            [ $this->data[0][0] * $value, $this->data[0][1] * $value, $this->data[0][2] * $value, $this->data[0][3] * $value ],
+            [ $this->data[1][0] * $value, $this->data[1][1] * $value, $this->data[1][2] * $value, $this->data[1][3] * $value ],
+            [ $this->data[2][0] * $value, $this->data[2][1] * $value, $this->data[2][2] * $value, $this->data[2][3] * $value ],
+            [ $this->data[3][0] * $value, $this->data[3][1] * $value, $this->data[3][2] * $value, $this->data[3][3] * $value ]
+        ]);
+
+        }
+    }
+
     public function toArray() {
         return $this->data;
     }

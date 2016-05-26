@@ -85,7 +85,8 @@ class vec3 implements \ArrayAccess {
     public function normalize() {
         $length = $this->length();
         if($length == 0) {
-            return;
+            trigger_error('Vector length is 0, returning without modifying components', E_USER_NOTICE);
+            return $this;
         }
         $this->x = $this->x / $length;
         $this->y = $this->y / $length;
