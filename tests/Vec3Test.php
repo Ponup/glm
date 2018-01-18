@@ -1,7 +1,7 @@
 <?php
 namespace glm;
 
-class Vec3Test extends \PHPUnit_Framework_TestCase {
+class Vec3Test extends \PHPUnit\Framework\TestCase {
 
 	public function testDefaultConstructorInitializesComponents() {
 		$vec3 = new vec3;

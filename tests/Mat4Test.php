@@ -1,7 +1,7 @@
 <?php
 namespace glm;
 
-class Mat4Test extends \PHPUnit_Framework_TestCase {
+class Mat4Test extends \PHPUnit\Framework\TestCase {
 
     public function testConstructorDefaultsToIdentityMatrix() {
         $matrix = new mat4;
