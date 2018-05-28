@@ -67,6 +67,18 @@ function translate(mat4 $m, vec3 $v) {
     return $translation->multiply($m);
 }
 
+function scale(mat4 $m, vec3 $v) {
+
+    $d = value_ptr($m);
+
+    return new mat4([
+        [$d[0] * $v->x, $d[1] * $v->x, $d[2] * $v->x, $d[3] * $v->x],
+        [$d[4] * $v->y, $d[5] * $v->y, $d[6] * $v->y, $d[7] * $v->y],
+        [$d[8] * $v->z, $d[9] * $v->z, $d[10] * $v->z, $d[11] * $v->z],
+        [$d[12], $d[13], $d[14], $d[15]]
+    ]);
+}
+
 function rotate(mat4 $m, $angle, vec3 $normal) {
     $angle = deg2rad($angle);
     if($normal->x) {
