@@ -4,4 +4,4 @@ php:
 before_install:
   composer install
 script:
-  phpunit tests
+  vendor/bin/phpunit tests
