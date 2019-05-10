@@ -1,7 +1,8 @@
 <?php
 namespace glm;
 
-class vec3 implements \ArrayAccess {
+class vec3 implements \ArrayAccess
+{
 
     /**
      * @var float
@@ -13,32 +14,38 @@ class vec3 implements \ArrayAccess {
      * @param float $y
      * @param float $z
      */
-    public function __construct($x = 0.0, $y = 0.0, $z = 0.0) {
+    public function __construct($x = 0.0, $y = 0.0, $z = 0.0)
+    {
         $this->x = $x;
         $this->y = $y;
         $this->z = $z;
     }
 
-    public function offsetExists($offset) {
+    public function offsetExists($offset): bool
+    {
         return ($offset >= 0 && $offset <= 2);
     }
 
-    public function offsetGet($offset) {
-        switch($offset) {
-        case 0: return $this->x;
-        case 1: return $this->y;
-        case 2: return $this->z;
+    public function offsetGet($offset)
+    {
+        switch ($offset) {
+            case 0:
+                return $this->x;
+            case 1:
+                return $this->y;
+            case 2:
+                return $this->z;
         }
     }
 
-    public function offsetSet($offset, $value) {
-    }
+    public function offsetSet($offset, $value)
+    { }
 
-    public function offsetUnset($offset) {
+    public function offsetUnset($offset)
+    { }
 
-    }
-
-    public function ceil() {
+    public function ceil()
+    {
         $this->x = ceil($this->x);
         $this->y = ceil($this->y);
         $this->z = ceil($this->z);
@@ -47,7 +54,8 @@ class vec3 implements \ArrayAccess {
     /**
      * @return vec3
      */
-    public function negate() {
+    public function negate(): vec3
+    {
         return new vec3(
             -$this->x,
             -$this->y,
@@ -55,7 +63,8 @@ class vec3 implements \ArrayAccess {
         );
     }
 
-    public function substract(vec3 $other) {
+    public function substract(vec3 $other): vec3
+    {
         return new vec3(
             $this->x - $other->x,
             $this->y - $other->y,
@@ -63,7 +72,8 @@ class vec3 implements \ArrayAccess {
         );
     }
 
-    public function add(vec3 $other) {
+    public function add(vec3 $other): vec3
+    {
         return new vec3(
             $this->x + $other->x,
             $this->y + $other->y,
@@ -71,20 +81,20 @@ class vec3 implements \ArrayAccess {
         );
     }
 
-    /**
-     * @return float
-     */
-    public function length() {
+    public function length(): float
+    {
         return sqrt($this->x * $this->x + $this->y * $this->y + $this->z * $this->z);
     }
 
-    public function lengthSq() {
+    public function lengthSq()
+    {
         return ($this->x * $this->x + $this->y * $this->y + $this->z * $this->z);
     }
 
-    public function normalize() {
+    public function normalize()
+    {
         $length = $this->length();
-        if($length == 0) {
+        if ($length == 0) {
             trigger_error('Vector length is 0, returning without modifying components', E_USER_NOTICE);
             return $this;
         }
@@ -94,7 +104,8 @@ class vec3 implements \ArrayAccess {
         return $this;
     }
 
-    public function cross(vec3 $other) {
+    public function cross(vec3 $other): vec3
+    {
         return new vec3(
             $this->y * $other->z - $this->z * $other->y,
             $this->z * $other->x - $this->x * $other->z,
@@ -106,8 +117,9 @@ class vec3 implements \ArrayAccess {
      * @param number $number
      * @return vec3
      */
-    public function scale($number) {
-        if(!is_numeric($number)) {
+    public function scale($number)
+    {
+        if (!is_numeric($number)) {
             throw new \Exception('Invalid scalar: ' . $number);
         }
         return new vec3(
@@ -117,16 +129,18 @@ class vec3 implements \ArrayAccess {
         );
     }
 
-    public function dot(vec3 $other) {
+    public function dot(vec3 $other)
+    {
         return ($this->x * $other->x + $this->y * $other->y + $this->z * $other->z);
     }
 
-    public function toArray() {
-        return array( $this->x, $this->y, $this->z );
+    public function toArray()
+    {
+        return array($this->x, $this->y, $this->z);
     }
 
-    public function __toString() {
+    public function __toString()
+    {
         return sprintf('vec3(%f, %f, %f)', $this->x, $this->y, $this->z);
     }
 }
-
