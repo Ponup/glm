@@ -1,14 +1,8 @@
 <?php
 namespace glm;
 
-class vec3 implements \ArrayAccess
+class vec3 extends vec
 {
-
-    /**
-     * @var float
-     */
-    public $x, $y, $z;
-
     /**
      * @param float $x
      * @param float $y
@@ -16,6 +10,7 @@ class vec3 implements \ArrayAccess
      */
     public function __construct($x = 0.0, $y = 0.0, $z = 0.0)
     {
+        parent::__construct(3);
         $this->x = $x;
         $this->y = $y;
         $this->z = $z;
@@ -49,18 +44,6 @@ class vec3 implements \ArrayAccess
         $this->x = ceil($this->x);
         $this->y = ceil($this->y);
         $this->z = ceil($this->z);
-    }
-
-    /**
-     * @return vec3
-     */
-    public function negate(): vec3
-    {
-        return new vec3(
-            -$this->x,
-            -$this->y,
-            -$this->z
-        );
     }
 
     public function substract(vec3 $other): vec3
@@ -132,15 +115,5 @@ class vec3 implements \ArrayAccess
     public function dot(vec3 $other)
     {
         return ($this->x * $other->x + $this->y * $other->y + $this->z * $other->z);
-    }
-
-    public function toArray()
-    {
-        return array($this->x, $this->y, $this->z);
-    }
-
-    public function __toString()
-    {
-        return sprintf('vec3(%f, %f, %f)', $this->x, $this->y, $this->z);
     }
 }

@@ -1,10 +1,12 @@
 <?php
 namespace glm;
 
-use \glm\vec3;
-use \glm\mat4;
+function vec2($x, $y): vec2
+{
+    return new vec2($x, $y);
+}
 
-function vec3($x, $y, $z)
+function vec3($x, $y, $z): vec3
 {
     return new vec3($x, $y, $z);
 }

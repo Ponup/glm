@@ -12,7 +12,7 @@ class Vec3Test extends \PHPUnit\Framework\TestCase {
 
     public function testStringRepresentation() {
         $vector = new vec3(-5, 2, 3);
-        $this->assertEquals('vec3(-5.000000, 2.000000, 3.000000)', strval($vector));
+        $this->assertEquals('glm\vec3(-5, 2, 3)', strval($vector));
     }
 
     public function testArrayConversion() {
